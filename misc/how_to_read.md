@@ -9,15 +9,17 @@
 
 然而，通过了解它们的构造和发布流程，可以更轻松地理解你正在查阅的内容。这是我自身的经验，是在我对 HTTP 和一些 [其他信息](https://datatracker.ietf.org/person/Mark%20Nottingham) 的了解过程中体会到的。
 
-## Where to start?
+## 从哪儿开始？
 
-The canonical place to find RFCs is the RFC Editor Web Site. However, as we’ll see below, some key information is missing there, so most people use tools.ietf.org.
+[RFC Editor](https://www.rfc-editor.org/) 是查找 RFC 文档的权威网站。不过正如我们将在下面看到的那样，这里缺少一些关键信息，因此大多数人都选择使用 [tools.ietf.org](https://tools.ietf.org/)。
 
-Even finding the right RFC can be difficult since there are so many (currently, nearly 9,000!). Obviously you can find them with general Web search engines, and the RFC Editor has an excellent search facility on their site.
+由于 RFC 文件数量太多（目前将近 9,000 个！），仅仅是找到正确的 RFC 也是很困难的。显然你可以使用普通的 Web 搜索引擎查找它们，RFC Editor 在其站点上也有出色的搜索功能。
 
-Another option is EveryRFC, which I put together to allow searching RFCs by their titles and keywords, and exploration by tags.
+另一个选项是 [EveryRFC](https://everyrfc.org/)，在这里可以按 RFC 文档的标题、关键字搜索，也可以直接选定某些标签进行探索。
 
-It’s no secret that plain text RFCs are difficult to read bordering on ugly, but things are about to improve; the RFC Editor is wrapping up a new RFC format, with much more pleasing presentation and the option for customisation. In the meantime, if you want more usable RFCs, you can use third-party repositories for selected ones; for example, greenbytes keeps a list of WebDAV-related RFCs, and the HTTP Working Group maintains a selection of those related to HTTP.
+毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式](https://www.rfc-editor.org/rse/format-faq/)。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes](https://greenbytes.de/tech/webdav/) 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EWeb%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%96%E5%86%99%E5%92%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6)） 相关的 RFC 文件列表，[HTTP 工作组](https://httpwg.org/specs/) 则维护与 HTTP 相关的列表。
+
+
 
 ## What kind of RFC is it?
 
