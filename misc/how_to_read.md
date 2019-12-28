@@ -1,25 +1,37 @@
 # 如何（高效地）阅读 RFC 文件
 
-*本文译自 [How to Read an RFC][how_to_read], [mnot’s blog (Mark Nottingham)][mnot]*
-
 [mnot]: https://www.mnot.net/
 [how_to_read]: https://www.mnot.net/blog/2018/07/31/read_rfc
 
+*本文译自 [How to Read an RFC][how_to_read], [mnot’s blog (Mark Nottingham)][mnot]*
+
 无论好坏，“请求意见稿”（RFCs）为我们指明了许多与互联网有关的协议。这些文档被陷入其中寻找隐含意义的开发者视为圣经，然后又由于它们不易被理解而被回避，被认为无关紧要。这常常会引起挫败感，更甚者引发互通性问题与安全性问题。
 
-然而，通过了解它们的构造和发布流程，可以更轻松地理解你正在查阅的内容。这是我自身的经验，是在我对 HTTP 和一些 [其他信息](https://datatracker.ietf.org/person/Mark%20Nottingham) 的了解过程中体会到的。
+[mark_nottingham](https://datatracker.ietf.org/person/Mark%20Nottingham)
+
+然而，通过了解它们的构造和发布流程，可以更轻松地理解你正在查阅的内容。这是我自身的经验，是在我对 HTTP 和一些 [其他信息][mark_nottingham] 的了解过程中体会到的。
 
 ## 从哪儿开始？
 
-[RFC Editor](https://www.rfc-editor.org/) 是查找 RFC 文档的权威网站。不过正如我们将在下面看到的那样，这里缺少一些关键信息，因此大多数人都选择使用 [tools.ietf.org](https://tools.ietf.org/)。
+[rfc_editor]: https://www.rfc-editor.org/
+[ietf_tools]: https://tools.ietf.org/
+
+[RFC Editor][rfc_editor] 是查找 RFC 文档的权威网站。不过正如我们将在下面看到的那样，这里缺少一些关键信息，因此大多数人都选择使用 [tools.ietf.org][ietf_tools]。
 
 由于 RFC 文件数量太多（目前将近 9,000 个！），仅仅是找到正确的 RFC 也是很困难的。显然你可以使用普通的 Web 搜索引擎查找它们，RFC Editor 在其站点上也有出色的搜索功能。
 
-另一个选项是 [EveryRFC](https://everyrfc.org/)，在这里可以按 RFC 文档的标题、关键字搜索，也可以直接选定某些标签进行探索。
+[every_rfc]: https://everyrfc.org/
 
-毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式](https://www.rfc-editor.org/rse/format-faq/)。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes](https://greenbytes.de/tech/webdav/) 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EWeb%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%96%E5%86%99%E5%92%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6)） 相关的 RFC 文件列表，[HTTP Working Group](https://httpwg.org/specs/) 则维护与 HTTP 相关的列表。
+另一个选项是 [EveryRFC][every_rfc]，在这里可以按 RFC 文档的标题、关键字搜索，也可以直接选定某些标签进行探索。
 
-## 这是什么样的 RFC？
+[rfc_format]: https://www.rfc-editor.org/rse/format-faq/
+[greenbytes]: https://greenbytes.de/tech/webdav/
+[wiki_webdav]: https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EWeb%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%96%E5%86%99%E5%92%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6
+[http_group]: https://httpwg.org/specs/
+
+毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式][rfc_format]。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes][greenbytes] 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制][wiki_webdav]）相关的 RFC 文件列表，[HTTP Working Group][http_group] 则维护与 HTTP 相关的列表。
+
+## 这份 RFC 是什么样的？
 
 所有的 RFC 文件顶部都有如下横幅：
 
@@ -32,40 +44,53 @@ Category: Standards Track                                      June 2014
 ISSN: 2070-1721
 ```
 
-最左上角的 “Internet Engineering Task Force (IETF)（互联网工程任务组）” 表明这是 IETF 的产物；尽管并不广为人知，还是有其他方法可以发布无需获得 IETF 认可的 RFC 文件；例如，[独立提交流程](https://www.rfc-editor.org/about/independent/)。
+[indepent_stream]: https://www.rfc-editor.org/about/independent/
+
+最左上角的 “Internet Engineering Task Force (IETF)（互联网工程任务组）” 表明这是 IETF 的产物；尽管并不广为人知，还是有其他方法可以发布无需获得 IETF 认可的 RFC 文件；例如，[独立提交流程][indepent_stream]。
 
 事实上存在着很多“流（stream）”可以用来发布文档。**只有 IETF 流表明协议规范已经经过整个 IEFT 组织审核并做出共识声明**。
 
-较早的文档（大约在 RFC5705 之前）中最左上角写的是“Network Working Group（网络工作组）”，因此你需要多花一点时间才能确定它们是否代表 IETF 共识；请参阅“Status of this Memo（此备忘录的状态）”部分，也可以查阅 [RFC Editor 网站](https://www.rfc-editor.org/)。
+较早的文档（大约在 RFC5705 之前）中最左上角写的是“Network Working Group（网络工作组）”，因此你需要多花一点时间才能确定它们是否代表 IETF 共识；请参阅“Status of this Memo（此备忘录的状态）”部分，也可以查阅 [RFC Editor 网站][rfc_editor]。
 
-在此下方是“请求意见稿”编号。**如果显示的是“Internet-Draft（互联网草案）”，则它不是 RFC**；这只是一个建议，*任何人*都 [可以写一个](https://datatracker.ietf.org/submit/)。仅凭某些文档是互联网草案并不意味着它会被 IETF 所采用。
+[datatracker]: https://datatracker.ietf.org/submit/
 
-*类别*可以是“Standards Track（标准记录）”、“Informational（报告性的）”、“Experimental（实验性的）”和“Best Current Practice（最佳现行实践）”其中之一。它们之间的区别有时是模糊的，但如果是 IETF 产出的（请参见上文），则表明已经经过合理的审查。但是请注意，即使经过 IETF 共识发布，报告性的和实验性的文件也并*不是*标准。
+在此下方是“请求意见稿”编号。**如果显示的是“Internet-Draft（互联网草案）”，则它不是 RFC**；这只是一个建议，*任何人*都 [可以写一个][datatracker]。仅凭某些文档是互联网草案并不意味着它会被 IETF 所采用。
+
+*类别*可以是“Standards Track（标准记录）”、“Informational（报告性的）”、“Experimental（实验性的）”和“Best Current Practice（最佳现行实践）”其中之一。它们之间的区别有时是模糊的，但如果是 IETF 产出的（请参见上文），则表明已经经过合理的评审。但是请注意，即使经过 IETF 共识发布，报告性的和实验性的文件也*不是*标准。
 
 最后，文档的**作者**列在标题的右侧。与学术界不同，这不是谁为文档做出了贡献的完整列表；通常，完整贡献列表是在“致谢”部分的末尾完成的。在 RFC 文档中，这实际上指的是“编写文档的人”。通常，你会看到追加在名字后面的“Ed.”。这表明他们是编辑者，通常是因为文本原先已存在（例如修订 RFC 时）。
 
-## Is it Current?
-RFCs are an archival series of documents; they can’t change, even by one character (see the diff between RFC7158 and RFC7159 for an example of this taken to the extreme; they got the year wrong ;).
+## 它是最新的吗？
 
-As a result, it’s important to know that you’re looking at the right document. The header contains a couple of bits of metadata that help here:
+[diff_7158_7159]: https://tools.ietf.org/rfcdiff?url1=rfc7158&url2=rfc7159
 
-Obsoletes lists the RFCs that this document completely replaces; i.e., you should be using this document, not that one. Note that an old version of a protocol isn’t necessarily obsoleted when a newer one comes out; for example, HTTP/2 doesn’t obsolete HTTP/1.1, because it’s still legitimate (and necessary) to implement the older protocol. However, RFC7230 did obsolete RFC2616, because it’s the reference for that protocol.
+RFC 是系列文档的存档；它们甚至连一个字符都不能改变（请参阅 [RFC7158 和 RFC7159 之间的差异对比][diff_7158_7159] 以查看极端效果示例；它们搞错了年份 ;）。
 
-Updates lists the RFCs that this document makes substantive changes to; in other words, if you’re reading that other document, you should probably read this one too.
+因此，重要的是要知道你看到的是正确的文档。头部横幅包含了一些元数据，它们发挥以下作用：
 
-Unfortunately, the ASCII text RFCs (e.g., at the RFC Editor site) don’t tell you what documents update or obsolete the document you’re currently looking at. This is why most people use the RFC repository at tools.ietf.org, which puts this information in a banner like this:
+- **Obsoletes**（过时列表）列出了被本文档完全替代的 RFC 文件；也就是说，你应该使用此文档，而不要使用 Obsoletes 指出的文档。需要注意的是，新版本的协议不一定会淘汰旧版本的协议；例如 HTTP/2 不会替代 HTTP/1.1，因为它仍然是旧协议的合法（也是必要的）规范。但是，RFC7230 的确淘汰了 RFC2616，因为它是该协议（HTTP/1.1）新的标准。
+- **Updates**（更新列表）列出了被本文档实质性改变了的 RFC，换句话说，如果你正在阅读更新列表的文档，则也应该阅读本文档。
 
+[rfc_2616]: https://tools.ietf.org/html/rfc2616
+
+不幸的是，纯 ASCII 文本的 RFC 文件（例如 RFC Editor 上面的 RFC）无法告知你哪些文档更新或淘汰了你当前正在阅读的文档。这就是大多数人选择使用 tools.ietf.org 的 RFC 存储库的原因，它将这些信息放在 [如下的文件头部横幅中][rfc_2616]：
+
+```text
 [Docs] [txt|pdf] [draft-ietf-http...] [Tracker] [Diff1] [Diff2] [Errata]
 
 Obsoleted by: 7230, 7231, 7232, 7233, 7234, 7235          DRAFT STANDARD
 Updated by: 2817, 5785, 6266, 6585                          Errata Exist
-Each of the numbers on the tools page is a link, so you can easily find the current document.
+```
 
-Even the most current RFC often has issues. In the tools banner, you’ll also see a warning on the right that “Errata Exist” along with a link to Errata above it.
+工具页面上的每个数字都是一个链接，因此你可以轻松找到最新的文档。
 
-Errata are corrections and clarifications to the document that aren’t worthy of publishing a new RFC. Sometimes they can have a substantial impact on how the RFC is implemented (for example, if a bug in the spec led to a significant misinterpretation), so they’re worth going through.
+即使是最新的 RFC 也经常出现问题。在工具横幅中，你还会在右侧看到“Errata Exist（存在勘误）”的警告，以及位于其上方的勘误链接。
 
-For example, here are the errata for RFC7230. When reading errata, keep their status in mind; many are rejected because someone just misread the spec.
+**勘误**是在没必要发布新 RFC 文件时对相应文档的更正和澄清。有时，它们可能会对 RFC 的实施方式产生重大影响（例如规范中的错误导致重大误解），因此值得一读。
+
+[errata_7230]: https://www.rfc-editor.org/errata_search.php?rfc=7230
+
+例如 [RFC7230 的勘误表][errata_7230]。阅读勘误表时，请牢记其状态；许多人因为误读规范导致提交的勘误被否决了。
 
 ## Understanding Context
 
@@ -191,3 +216,8 @@ Filing an errata is usually not the first step you should take – talk to someo
 Many Working Groups are now using Github for managing their specifications; if you have a question about an active specification, go ahead and file an issue. If it’s already an RFC, it’s usually best to use the mailing list unless you find directions to the contrary.
 
 I’m sure there’s more to write about how to read RFCs, and some will dispute what I’ve written here, but this is how I think about them. I hope it was useful.
+
+## 译者
+
+- [Octobug](https://github.com/Octobug)
+- [Shady](https://github.com/shady-robot)
