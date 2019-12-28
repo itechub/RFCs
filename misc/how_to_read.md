@@ -17,31 +17,32 @@
 
 另一个选项是 [EveryRFC](https://everyrfc.org/)，在这里可以按 RFC 文档的标题、关键字搜索，也可以直接选定某些标签进行探索。
 
-毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式](https://www.rfc-editor.org/rse/format-faq/)。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes](https://greenbytes.de/tech/webdav/) 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EWeb%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%96%E5%86%99%E5%92%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6)） 相关的 RFC 文件列表，[HTTP 工作组](https://httpwg.org/specs/) 则维护与 HTTP 相关的列表。
+毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式](https://www.rfc-editor.org/rse/format-faq/)。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes](https://greenbytes.de/tech/webdav/) 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EWeb%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%96%E5%86%99%E5%92%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6)） 相关的 RFC 文件列表，[HTTP Working Group](https://httpwg.org/specs/) 则维护与 HTTP 相关的列表。
 
+## 这是什么样的 RFC？
 
+所有的 RFC 文件顶部都有如下横幅：
 
-## What kind of RFC is it?
-
-All RFCs have a banner at the top that looks something like this:
-
+```Text
 Internet Engineering Task Force (IETF)                  R. Fielding, Ed.
 Request for Comments: 7230                                         Adobe
 Obsoletes: 2145, 2616                                    J. Reschke, Ed.
 Updates: 2817, 2818                                           greenbytes
 Category: Standards Track                                      June 2014
 ISSN: 2070-1721
-At the top left, this one says “Internet Engineering Task Force (IETF)”. That indicates that this is a product of the IETF; although it’s not widely known, there are other ways to publish an RFC that don’t require IETF consensus; for example, the independent stream.
+```
 
-In fact, there are a number of “streams” that a document can be published on. Only the IETF stream indicates that the entire IETF has reviewed and has declared consensus on a protocol’s specification.
+最左上角的 “Internet Engineering Task Force (IETF)（互联网工程任务组）” 表明这是 IETF 的产物；尽管并不广为人知，还是有其他方法可以发布无需获得 IETF 认可的 RFC 文件；例如，[独立提交流程](https://www.rfc-editor.org/about/independent/)。
 
-Older documents (before about RFC5705) say “Network Working Group” there, so you have to dig a bit more to find out whether they represent IETF consensus; look at the “Status of this Memo” section for a start, as well as the RFC Editor site.
+事实上存在着很多“流（stream）”可以用来发布文档。**只有 IETF 流表明协议规范已经经过整个 IEFT 组织审核并做出共识声明**。
 
-Under that is the “Request for Comments” number. If it says “Internet-Draft” instead, it’s not an RFC; it’s just a proposal, and anyone can write one. Just because something is an Internet-Draft doesn’t mean it’ll ever be adopted by the IETF.
+较早的文档（大约在 RFC5705 之前）中最左上角写的是“Network Working Group（网络工作组）”，因此你需要多花一点时间才能确定它们是否代表 IETF 共识；请参阅“Status of this Memo（此备忘录的状态）”部分，也可以查阅 [RFC Editor 网站](https://www.rfc-editor.org/)。
 
-Category is one of “Standards Track”, “Informational”, “Experimental”, or “Best Current Practice”. The distinctions between these are sometimes fuzzy, but if it’s produced by the IETF (see above), it’s had a reasonable amount of review. However, note that Informational and Experimental are not standards, even if there’s IETF consensus to publish.
+在此下方是“请求意见稿”编号。**如果显示的是“Internet-Draft（互联网草案）”，则它不是 RFC**；这只是一个建议，*任何人*都 [可以写一个](https://datatracker.ietf.org/submit/)。仅凭某些文档是互联网草案并不意味着它会被 IETF 所采用。
 
-Finally, the authors of the document are listed on the right side of the header. Unlike in academia, this is not a comprehensive list of who contributed to the document; often, that’s done near the bottom in an “Acknowledgments” section. In RFCs, this is literally “who wrote the document.” Often, you’ll see “Ed.” appended, which indicates that they were acting as an editor, often because the text was pre-existing (like when an RFC is revised).
+*类别*可以是“Standards Track（标准记录）”、“Informational（报告性的）”、“Experimental（实验性的）”和“Best Current Practice（最佳现行实践）”其中之一。它们之间的区别有时是模糊的，但如果是 IETF 产出的（请参见上文），则表明已经经过合理的审查。但是请注意，即使经过 IETF 共识发布，报告性的和实验性的文件也并*不是*标准。
+
+最后，文档的**作者**列在标题的右侧。与学术界不同，这不是谁为文档做出了贡献的完整列表；通常，完整贡献列表是在“致谢”部分的末尾完成的。在 RFC 文档中，这实际上指的是“编写文档的人”。通常，你会看到追加在名字后面的“Ed.”。这表明他们是编辑者，通常是因为文本原先已存在（例如修订 RFC 时）。
 
 ## Is it Current?
 RFCs are an archival series of documents; they can’t change, even by one character (see the diff between RFC7158 and RFC7159 for an example of this taken to the extreme; they got the year wrong ;).
