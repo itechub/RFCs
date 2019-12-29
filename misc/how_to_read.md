@@ -123,7 +123,8 @@ capitals, as shown here.
 
 本文档中的关键字 "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", 与
-"OPTIONAL"，当且仅当它们的所有字母都是大写形式时，它们取的即是 BCP 14 [RFC2119] [RFC8174] 中表述的含义。
+"OPTIONAL"，当且仅当它们的所有字母都是大写形式时，它们取的即是 BCP 14 [RFC2119]
+[RFC8174] 中表述的含义。
 ```
 
 [rfc_2119]: https://tools.ietf.org/html/rfc2119
@@ -135,7 +136,7 @@ The Foo message MUST NOT contain a Bar header.
 消息 Foo 中不能包含头部 Bar。
 ```
 
-该要求限制的对象是协议实例，即“Foo 消息”。如果你要发送一个该协议的实例对象，那么很显然它不应该包含Bar 头部；如果它包含了，则它不是符合规范的消息。
+该要求限制的对象是协议工件（artefact，可理解为协议的某种实现的实例，或者“协议伪实例”，相当于编程中的“伪代码”），即“Foo 消息”。如果你要发送一个该协议的实例对象，那么很显然它不应该包含 Bar 头部；如果它包含了，则它不是符合规范的消息。
 
 但是，接收者收到后有如何行为则规定得没有那么清晰；如果你看到带有 Bar 头部的 Foo 消息，你会怎么办？
 
@@ -152,7 +153,8 @@ Senders of the Foo message MUST NOT include a Bar header. Recipients
 of a Foo message that includes a Bar header MUST ignore the Bar header,
 but MUST NOT remove it.
 
-Foo 消息的发送者不得在其中包含 Bar 头部。包含 Bar 头部的 Foo 消息的接收者必须忽略 Bar 头部，但不得移除它。
+Foo 消息的发送者不得在其中包含 Bar 头部。包含 Bar 头部的 Foo 消息的接收者必须忽略
+Bar 头部，但不得移除它。
 ```
 
 [http_conformance]: https://httpwg.org/specs/rfc7230.html#conformance
@@ -167,63 +169,91 @@ Foo 消息的发送者不得在其中包含 Bar 头部。包含 Bar 头部的 Fo
 
 同样地，HTTP 会根据特定情况在某些要求中区分“generating（生成）”消息和仅“forwarding（转发）”消息。关注这种特定的术语可以免去大量的猜测。
 
-### SHOULD
+### 关键字 “SHOULD”
 
-Yep, SHOULD deserves its own section. This wishy-washy term plagues many RFCs, despite efforts to eradicate it. RFC2119 describes it as:
+是的，关键字 “SHOULD”值得单独说一下。尽管在去除这个关键字上面做了很多努力，这个含义模糊的词仍困扰着许多RFC 文件。RFC2119 将其描述为：
 
+```text
 SHOULD  This word, or the adjective "RECOMMENDED", mean that there
         may exist valid reasons in particular circumstances to ignore a
         particular item, but the full implications must be understood and
         carefully weighed before choosing a different course.
-In practice, authors often use SHOULD and SHOULD NOT to mean “We’d like you to do this, but we know we can’t always require it.”
 
-For example, in the overview of HTTP methods, we see:
+应该     这个词或是形容词“推荐”，它们的意思是在特定情况下可能存在正当理由而忽略特定条款，
+        前提是必须理解其全部含义并在选择其他方案之前经过请仔细权衡。
+```
 
+实际上，作者经常使用“SHOULD（应该）”和“SHOULD NOT（不应该）”来表示“我们希望你这样做，但是我们知道我们并不总是要求你做到。”
+
+[http_method_overview]: https://httpwg.org/specs/rfc7231.html#method.overview
+
+例如，在 [HTTP 方法概述][http_method_overview] 中，我们可以看到：
+
+```text
 When a request method is received that is unrecognized or not
 implemented by an origin server, the origin server SHOULD respond
 with the 501 (Not Implemented) status code. When a request method
 is received that is known by an origin server but not allowed for
 the target resource, the origin server SHOULD respond with the 405
 (Method Not Allowed) status code.
-These SHOULDs are not MUSTs because the server might reasonably decide to take another action; if the request is from a client that is believed to be an attacker, it might drop the connection, or if HTTP authentication is required for the resource, it might enforce that with a 401 (Not Authenticated) before getting to the 405.
 
-SHOULD doesn’t mean that the server is free to ignore a requirement because it doesn’t feel like honouring it.
+当收到无法识别或未经服务器实现的请求方法时，服务器**应该**响应状态代码 501（未
+实现）。当收到一个请求方法为服务器所知但目标资源不被允许访问时，服务器**应该**
+响应状态码 405（不允许的方法）。
+```
 
-Sometimes, we see a SHOULD that follows this form:
+这些“应该”不是必须遵守的，因为服务器也许有合理的理由决定采取其他措施；如果请求来自被认为是攻击者的客户端，则它可能会断开连接，或者说请求的资源要求使用 HTTP 身份验证，则在进入 405 之前，它可能会使用 401（未经身份验证）响应该请求。
 
+“应该”也*不*意味着服务器就可以随意忽略规范要求，因为这让它给人一种不尊重规范的感觉。
+
+[multipart]: https://httpwg.org/specs/rfc7231.html#multipart.types
+
+有时我们会 [看到][multipart] “应该”遵循以下形式：
+
+```text
 A sender that generates a message containing a payload body SHOULD
 generate a Content-Type header field in that message unless the
 intended media type of the enclosed representation is unknown to
 the sender.
-Notice the “unless” – it’s specifying the “particular circumstances” that the SHOULD allows. Arguably this could be specified as a MUST, since the unless clause would still apply, but this style of specification is somewhat common.
 
-## Reading Examples
+在发送方生成了包含 payload（有效载荷）体的消息时，“应该”同时在该消息中头部中生
+成 Content-Type 字段，除非有效载荷的媒体类型对发送方来说是未知的。
+```
 
-Another very common pitfall is to skim the specification for examples, and implement what they do.
+注意“除非”这个词——它指定了“应该”允许的“特殊情况”。可以说，可以将其指定为“必须”，因为除非子句仍然适用，但是这种规范风格较为普遍。
 
-Unfortunately, examples typically get the least amount of attention from authors, since they need to be updated with each change to the protocol.
+## 阅读规范实例
 
-As a result, they’re very often the least reliable parts of the spec. Yes, the authors should absolutely double-check the examples before publication, but errors do slip through.
+另一个非常常见的陷阱是浏览规范示例，并实现它们。
 
-Also, even a perfect example might not be intended to illustrate the aspect of the protocol you’re looking for; they’re often truncated for brevity, or shown after an decoding step takes place.
+不幸的是，示例通常是作者最少关注的部分，因为需要随着协议的每次更改都要对其进行更新。
 
-Even though it takes more time, it’s better to read the actual text; examples are not the specification.
+结果就是，它们通常是规范中最不可靠的部分。是的，作者绝对应该在发布之前仔细检查示例，但是疏忽总是会存在。
 
-## On ABNF
+另外，即使是一个完美的示例，也可能并不意在说明你正在寻找的协议的各个方面；简洁起见，通常会将它们截断，或者在解码步骤之后才显示。
 
-Augmented BNF is often used to define protocol artefacts. For example:
+最好还是阅读实际的文本即使这会花费更多时间；因为示例不是规范。
 
+## 使用 ABNF（Augmented Backus–Naur Form，增强型巴科斯-瑙尔范式）
+
+[abnf]: https://tools.ietf.org/html/rfc5234
+
+[增强型巴科斯-瑙尔范式][abnf] 常被用于定义协议工件实例。例如：
+
+```text
 FooHeader = 1#foo
 foo       = 1*9DIGIT [ ";" "bar" ]
-Once you get used to it, ABNF offers an easy-to-understand sketch of what protocol elements should look like.
+```
 
-However, ABNF is “aspirational” - it identifies an ideal form for a message, and those messages that you generate really need to match it. It doesn’t specify what to do with received messages that fail to match it. In fact, many specifications fail to say what the relationship of ABNF is to processing requirements at all.
+一旦你习惯了这种表示法，ABNF 会提供一个易于理解的“草图”，概述一个协议实例的结构与格式。
 
-Most protocols will fail badly if you try to enforce their ABNF strictly, but sometimes it matters. In the example above, whitespace isn’t allowed around the semicolon, but you can bet that some people will put it there, and some implementations will accept it.
+然而，ABNF 是“有抱负和理想化的”——它识别一条消息的理想形式，那么你生成的那些消息就需要与之完全匹配。它没有指定如何处理匹配失败的消息。实际上，许多规范都*无法*说明 ABNF 与消息处理要求之间的关系。
 
-So, make sure you read the text around the ABNF for additional requirements or context, and realise that absent a direct requirement, you may have to adjust parsing to be more accepting of input than the ABNF implies.
+如果你尝试严格执行 ABNF，大多数协议都会严重失败，但有时 ABNF 的确很重要。在上面的示例中，不允许在分号周围使用空格，但是可以打赌还是会有某些人会将空格放在分号周围，并且某些协议的实现会接受它。
 
-Some specifications are starting to acknowledge the aspirational nature of ABNF and specifying explicit parsing algorithms that incorporate error handling. When specified, these should be followed exactly, to ensure interoperability.
+因此，请确保你阅读了 ABNF 周边的说明以了解其他要求或需要的上下文，假如你发现到没有直白的规范要求，你可能需要调整解析严格程度以使其比 ABNF 所暗示的更容易接受输入。
+
+一些规范开始承认 ABNF 的理想性，并指定了包含错误处理的显式解析算法。当这些被指定时，应严格遵循这些规定，以确保互通性。
 
 ## Security Considerations
 
