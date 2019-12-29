@@ -1,4 +1,4 @@
-# 如何（高效地）阅读 RFC 文件
+# 如何阅读 RFC 文件
 
 [mnot]: https://www.mnot.net/
 [how_to_read]: https://www.mnot.net/blog/2018/07/31/read_rfc
@@ -7,7 +7,7 @@
 
 无论好坏，“请求意见稿”（RFCs）为我们指明了许多与互联网有关的协议。这些文档被陷入其中寻找隐含意义的开发者视为圣经，然后又由于它们不易被理解而被回避，被认为无关紧要。这常常会引起挫败感，更甚者引发互通性问题与安全性问题。
 
-[mark_nottingham](https://datatracker.ietf.org/person/Mark%20Nottingham)
+[mark_nottingham]: https://datatracker.ietf.org/person/Mark%20Nottingham
 
 然而，通过了解它们的构造和发布流程，可以更轻松地理解你正在查阅的内容。这是我自身的经验，是在我对 HTTP 和一些 [其他信息][mark_nottingham] 的了解过程中体会到的。
 
@@ -90,19 +90,25 @@ Updated by: 2817, 5785, 6266, 6585                          Errata Exist
 
 [errata_7230]: https://www.rfc-editor.org/errata_search.php?rfc=7230
 
-例如 [RFC7230 的勘误表][errata_7230]。阅读勘误表时，请牢记其状态；许多人因为误读规范导致提交的勘误被否决了。
+例如这是 [RFC7230 的勘误表][errata_7230]。阅读勘误表时，请牢记其状态；许多人因为误读规范导致提交的勘误被否决了。
 
-## Understanding Context
+## 理解上下文
 
-It’s more common than you might think for a developer to look at a statement in an RFC, implement what they see, and do the opposite of what the authors intended.
+对于开发者来说，查看 RFC 并实施他们所看到的内容，却执行了与作者意图相反的操作，这种情况比你想像的要普遍得多。
 
-This is because it’s extremely difficult to write a specification in a manner that can’t be misinterpreted when reading it selectively (as is the case with any holy text).
+这是因为在读者选择性阅读（就像读任何“圣经”一样）时，要以一种不被误读的方式编写规范是很困难的。
 
-As a result, it’s necessary to read not only the directly relevant text but also (at a minimum) anything that it references, whether that’s in the same spec or a different one. In a pinch, reading any potentially related sections will help immensely, if you can’t read the whole document.
+结果就是，不仅需要阅读直接相关的文本，（至少）阅读其引用的任何内容也是有必要的，无论是否在同一份规范中。假如你是在紧要关头，即使无法阅读整个文档，阅读所有可能相关的部分也会大有帮助。
 
-For example, HTTP message headers are defined to be separated by CRLF, but if you skip down here, you’ll see that “a recipient MAY recognize a single LF as a line terminator and ignore any preceding CR.” Obvious, right?
+[http_crlf]: https://httpwg.org/specs/rfc7230.html#http.message
+[http_lf]:https://httpwg.org/specs/rfc7230.html#message.robustness
 
-It’s also important to keep in mind that many protocols set up IANA registries to manage their extension points; these, not the specifications, are the sources of truth. For example, the canonical list of HTTP methods is in this registry, not any of the HTTP specifications.
+例如，HTTP 消息头部被 [定义][http_crlf] 为由 CRLF 分隔，但是如果你跳过这部分文档到 [这里][http_lf]，显而易见你还是会看到“a recipient MAY recognize a single LF as a line terminator and ignore any preceding CR.（接收端**也许**会将 LF 符作为行分隔符，并忽略前面的 CR 符。）”的提示。
+
+[iana]:https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%B7%E7%A0%81%E5%88%86%E9%85%8D%E5%B1%80
+[http_registry]: https://www.iana.org/assignments/http-methods/http-methods.xhtml
+
+另一点需要谨记的是，许多协议都设置了 IANA（[Internet Assigned Numbers Authority，互联网号码分配局][iana]）登记列表管理它们的规范扩展；这些才是事实标准的来源，而不是规范文档。例如，HTTP 方法的权威列表包含在这个 [登记表][http_registry]中，而不是在 HTTP 规范文档中。
 
 ## Interpreting Requirements
 
