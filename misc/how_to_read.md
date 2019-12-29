@@ -29,9 +29,9 @@
 [wiki_webdav]: https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EWeb%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%96%E5%86%99%E5%92%8C%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6
 [http_group]: https://httpwg.org/specs/
 
-毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式][rfc_format]。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes][greenbytes] 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制][wiki_webdav]）相关的 RFC 文件列表，[HTTP Working Group][http_group] 则维护与 HTTP 相关的列表。
+毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一点总算将被改变；RFC Editor 正在设计更美观、可定制的新 [RFC 格式][rfc_format]。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes][greenbytes] 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制][wiki_webdav]）相关的 RFC 文件列表，[HTTP 工作组（HTTP Working Group）][http_group] 则维护与 HTTP 相关的列表。
 
-## 这份 RFC 是什么样的？
+## 这份 RFC 属于哪一类？
 
 所有的 RFC 文件顶部都有如下横幅：
 
