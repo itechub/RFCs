@@ -255,25 +255,30 @@ foo       = 1*9DIGIT [ ";" "bar" ]
 
 一些规范开始承认 ABNF 的理想性，并指定了包含错误处理的显式解析算法。当这些被指定时，应严格遵循这些规定，以确保互通性。
 
-## Security Considerations
+## 安全注意事项
 
-Ever since RFC3552, the RFC boilerplate has included a “Security Considerations” section.
+[rfc_3552]:https://tools.ietf.org/html/rfc3552
 
-As a result, it’s rare for an RFC to be published without a substantial section on security; the review process does not allow a draft to just say “There are no security considerations for this protocol”.
+自 [RFC3552][rfc_3552] 以来，RFC 样板就开始包含“安全注意事项”部分。
 
-So, it pays to read and make sure you understand the Security Considerations section, whether you’re implementing or deploying the protocol; if you don’t, it’s very likely that something will bite you down the road.
+因此，很少有缺乏关于安全性的实质性部分而发布 RFC 的情况；评审过程不允许草案说“此协议没有安全注意事项”。
 
-Following its references (if any) is also a good idea. If there aren’t any, try looking up some of the terms used to get an appreciation of the issues being discussed.
+所以需要阅读并确保你了解“安全注意事项”部分，无论你是要实施还是部署协议；如果不这样做，那么你接下来很可能会被安全性问题困扰。
 
-## Finding Out More
+遵循其引用（如果有）也是一个好主意。如果没有，请尝试查找那些用于理解所讨论的问题的术语。
 
-If an RFC doesn’t answer your question, or you’re not sure about the intent of its text, the best thing to do is to find the most relevant Working Group and ask a question on their mailing list. If there isn’t an active working group covering the topic in question, try the mailing list for the appropriate area.
+## 了解更多
 
-Filing an errata is usually not the first step you should take – talk to someone first.
+[working_group]: https://datatracker.ietf.org/wg/
+[ieft_area]: https://ietf.org/topics/areas/
 
-Many Working Groups are now using Github for managing their specifications; if you have a question about an active specification, go ahead and file an issue. If it’s already an RFC, it’s usually best to use the mailing list unless you find directions to the contrary.
+如果 RFC 无法回答你的问题，或者你不确定其文本的意图，那么最好的办法是找到最相关的 [工作组][working_group]，并在其邮件列表中提出问题。如果没有活跃的工作组讨论相关主题，请尝试相应 [区域][ieft_area] 的邮件列表。
 
-I’m sure there’s more to write about how to read RFCs, and some will dispute what I’ve written here, but this is how I think about them. I hope it was useful.
+提交勘误表通常不是你应该采取的第一步——建议先和他人交流确认。
+
+现在许多工作组都在使用 GitHub 来管理其规范；如果你对现行规范存在疑问，请提出问题。如果它已经成为 RFC 文件，通常最好是使用邮件列表来反馈，除非你找到其他截然相反的指示。
+
+我相信还有更多关于如何阅读 RFC 的文章，有些人会质疑我写的这篇文章，但这就是我对它们的看法。我希望它能发挥作用。
 
 ## 译者
 
