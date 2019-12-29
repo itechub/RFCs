@@ -5,7 +5,7 @@
 
 *本文译自 [How to Read an RFC][how_to_read], [mnot’s blog (Mark Nottingham)][mnot]*
 
-无论好坏，“请求意见稿”（RFCs）为我们指明了许多与互联网有关的协议。这些文档被陷入其中寻找隐含意义的开发者视为圣经，然后又由于它们不易被理解而被回避，被认为无关紧要。这常常会引起挫败感，更甚者引发互通性问题与安全性问题。
+无论好坏，“请求意见稿（RFC，Request for Comments）”为我们指明了许多与互联网有关的协议。这些文档被陷入其中寻找隐含意义的开发者视为圣经，然后又由于它们不易被理解而被回避，被认为无关紧要。这常常会引起挫败感，更甚者引发互通性问题与安全性问题。
 
 [mark_nottingham]: https://datatracker.ietf.org/person/Mark%20Nottingham
 
@@ -56,7 +56,7 @@ ISSN: 2070-1721
 
 在此下方是“请求意见稿”编号。**如果显示的是“Internet-Draft（互联网草案）”，则它不是 RFC**；这只是一个建议，*任何人*都 [可以写一个][datatracker]。仅凭某些文档是互联网草案并不意味着它会被 IETF 所采用。
 
-*类别*可以是“Standards Track（标准记录）”、“Informational（报告性的）”、“Experimental（实验性的）”和“Best Current Practice（最佳现行实践）”其中之一。它们之间的区别有时是模糊的，但如果是 IETF 产出的（请参见上文），则表明已经经过合理的评审。但是请注意，即使经过 IETF 共识发布，报告性的和实验性的文件也*不是*标准。
+*类别*可以是“标准记录（Standards Track）”、“报告性的（Informational）”、“实验性的（Experimental）”和“当前最佳实践（Best Current Practice）”其中之一。它们之间的区别有时是模糊的，但如果是 IETF 产出的（请参见上文），则表明已经经过合理的评审。但是请注意，即使经过 IETF 共识发布，报告性的和实验性的文件也*不是*标准。
 
 最后，文档的**作者**列在标题的右侧。与学术界不同，这不是谁为文档做出了贡献的完整列表；通常，完整贡献列表是在“致谢”部分的末尾完成的。在 RFC 文档中，这实际上指的是“编写文档的人”。通常，你会看到追加在名字后面的“Ed.”。这表明他们是编辑者，通常是因为文本原先已存在（例如修订 RFC 时）。
 
@@ -68,8 +68,8 @@ RFC 是系列文档的存档；它们甚至连一个字符都不能改变（请�
 
 因此，重要的是要知道你看到的是正确的文档。头部横幅包含了一些元数据，它们发挥以下作用：
 
-- **Obsoletes**（过时列表）列出了被本文档完全替代的 RFC 文件；也就是说，你应该使用此文档，而不要使用 Obsoletes 指出的文档。需要注意的是，新版本的协议不一定会淘汰旧版本的协议；例如 HTTP/2 不会替代 HTTP/1.1，因为它仍然是旧协议的合法（也是必要的）规范。但是，RFC7230 的确淘汰了 RFC2616，因为它是该协议（HTTP/1.1）新的标准。
-- **Updates**（更新列表）列出了被本文档实质性改变了的 RFC，换句话说，如果你正在阅读更新列表的文档，则也应该阅读本文档。
+- **过时列表**（Obsoletes）列出了被本文档完全替代的 RFC 文件；也就是说，你应该使用此文档，而不要使用 Obsoletes 指出的文档。需要注意的是，新版本的协议不一定会淘汰旧版本的协议；例如 HTTP/2 不会替代 HTTP/1.1，因为它仍然是旧协议的合法（也是必要的）规范。但是，RFC7230 的确淘汰了 RFC2616，因为它是该协议（HTTP/1.1）新的标准。
+- **更新列表**（Updates）列出了被本文档实质性改变了的 RFC，换句话说，如果你正在阅读更新列表的文档，则也应该阅读本文档。
 
 [rfc_2616]: https://tools.ietf.org/html/rfc2616
 
@@ -108,7 +108,7 @@ Updated by: 2817, 5785, 6266, 6585                          Errata Exist
 [iana]:https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%B7%E7%A0%81%E5%88%86%E9%85%8D%E5%B1%80
 [http_registry]: https://www.iana.org/assignments/http-methods/http-methods.xhtml
 
-另一点需要谨记的是，许多协议都设置了 IANA（[Internet Assigned Numbers Authority，互联网号码分配局][iana]）登记列表管理它们的规范扩展；这些才是事实标准的来源，而不是规范文档。例如，HTTP 方法的权威列表包含在这个 [登记表][http_registry]中，而不是在 HTTP 规范文档中。
+另一点需要谨记的是，许多协议都设置了 IANA（[Internet Assigned Numbers Authority，互联网号码分配局][iana]）登记列表管理它们的规范扩展；这些才是事实标准的来源，而不是规范文档。例如，HTTP 方法的权威列表包含在这个 [登记表][http_registry] 中，而不是在 HTTP 规范文档中。
 
 ## 用语要求
 
@@ -136,7 +136,7 @@ The Foo message MUST NOT contain a Bar header.
 消息 Foo 中不能包含头部 Bar。
 ```
 
-该要求限制的对象是协议工件（artefact，可理解为协议的某种实现的实例，或者“协议伪实例”，相当于编程中的“伪代码”），即“Foo 消息”。如果你要发送一个该协议的实例对象，那么很显然它不应该包含 Bar 头部；如果它包含了，则它不是符合规范的消息。
+该要求限制的对象是协议工件（artefact，可理解为协议的某种实现的实例，或者“协议伪实例”，类似于编程中的“伪代码”），即“Foo 消息”。如果你要发送一个该协议的实例对象，那么很显然它不应该包含 Bar 头部；如果它包含了，则它不是符合规范的消息。
 
 但是，接收者收到后有如何行为则规定得没有那么清晰；如果你看到带有 Bar 头部的 Foo 消息，你会怎么办？
 
@@ -167,11 +167,11 @@ Bar 头部，但不得移除它。
 
 例如，HTTP 具有 [代理][http_proxy] 的定义，它是一种中介，既实现了客户端又实现了服务器（但它不是 User-Agent 或真正的服务器）；他们需要注意针对所有这些角色的要求。
 
-同样地，HTTP 会根据特定情况在某些要求中区分“generating（生成）”消息和仅“forwarding（转发）”消息。关注这种特定的术语可以免去大量的猜测。
+同样地，HTTP 会根据特定情况在某些要求中区分“生成（generating）”消息和仅“转发（forwarding）”消息。关注这种特定的术语可以免去大量的猜测。
 
 ### 关键字 “SHOULD”
 
-是的，关键字 “SHOULD”值得单独说一下。尽管在去除这个关键字上面做了很多努力，这个含义模糊的词仍困扰着许多RFC 文件。RFC2119 将其描述为：
+是的，关键字 “SHOULD”值得单独说一下。尽管在去除这个关键字上面做了很多努力，这个含义模糊的词仍困扰着许多 RFC 文件。RFC2119 将其描述为：
 
 ```text
 SHOULD  This word, or the adjective "RECOMMENDED", mean that there
@@ -183,7 +183,7 @@ SHOULD  This word, or the adjective "RECOMMENDED", mean that there
         前提是必须理解其全部含义并在选择其他方案之前经过请仔细权衡。
 ```
 
-实际上，作者经常使用“SHOULD（应该）”和“SHOULD NOT（不应该）”来表示“我们希望你这样做，但是我们知道我们并不总是要求你做到。”
+实际上，作者经常使用“应该（SHOULD）”和“不应该（SHOULD NOT）”来表示“我们希望你这样做，但是我们知道我们并不总是要求你做到。”
 
 [http_method_overview]: https://httpwg.org/specs/rfc7231.html#method.overview
 
@@ -216,7 +216,7 @@ generate a Content-Type header field in that message unless the
 intended media type of the enclosed representation is unknown to
 the sender.
 
-在发送方生成了包含 payload（有效载荷）体的消息时，“应该”同时在该消息中头部中生
+在发送方生成了包含有效载荷（payload）体的消息时，“应该”同时在该消息中头部中生
 成 Content-Type 字段，除非有效载荷的媒体类型对发送方来说是未知的。
 ```
 
