@@ -110,40 +110,62 @@ Updated by: 2817, 5785, 6266, 6585                          Errata Exist
 
 另一点需要谨记的是，许多协议都设置了 IANA（[Internet Assigned Numbers Authority，互联网号码分配局][iana]）登记列表管理它们的规范扩展；这些才是事实标准的来源，而不是规范文档。例如，HTTP 方法的权威列表包含在这个 [登记表][http_registry]中，而不是在 HTTP 规范文档中。
 
-## Interpreting Requirements
+## 用语要求
 
-Almost all RFCs have boilerplate that looks something like this near the top:
+几乎所有 RFC 在其顶部附近都有样板，看起来像这样：
 
+```text
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
 "OPTIONAL" in this document are to be interpreted as described in
 BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
 capitals, as shown here.
-These RFC2119 keywords help define interoperability, but they also sometimes confuse developers. It’s very common to see a specification say something like:
 
+本文档中的关键字 "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", 与
+"OPTIONAL"，当且仅当它们的所有字母都是大写形式时，它们取的即是 BCP 14 [RFC2119] [RFC8174] 中表述的含义。
+```
+
+[rfc_2119]: https://tools.ietf.org/html/rfc2119
+
+这些 [RFC2119][rfc_2119] 关键字有助于定义互通性，但有时也会使开发者感到困惑。规范中有以下类似表述是常见的情况：
+
+```text
 The Foo message MUST NOT contain a Bar header.
-This requirement is placed upon a protocol artefact, the” Foo message”. If you’re sending one, it’s pretty clear it needs to not contain a Bar header; if you include one, it won’t be a conformant message.
+消息 Foo 中不能包含头部 Bar。
+```
 
-However, the behaviour of the recipient is much less clear; if you see a Foo message with a Bar header, what do you do?
+该要求限制的对象是协议实例，即“Foo 消息”。如果你要发送一个该协议的实例对象，那么很显然它不应该包含Bar 头部；如果它包含了，则它不是符合规范的消息。
 
-Some developers will reject a message that contains it, even though the specification says nothing about doing so. Others will still process the message, but strip the Bar header, or ignore it – even when the spec explicitly says that all headers need to be processed.
+但是，接收者收到后有如何行为则规定得没有那么清晰；如果你看到带有 Bar 头部的 Foo 消息，你会怎么办？
 
-All of these things can – unintentionally – cause interoperability issues. The correct thing to do is to follow normal processing for the header unless there’s a specific requirement to the contrary.
+有些开发者会拒绝包含 Bar 头部的 Foo 消息，即便规范没有说明应该这样做。其他开发者可能仍将处理该消息，但是会先解析丢弃 Bar 头部，或者忽略它——即使规范中明确指出需要处理所有头部。
 
-That’s because in general, specifications are written so that behaviours are overtly specified; in other words, everything that is not explicitly disallowed is allowed. Therefore, reading too much into specifications can unintentionally cause harm, since you’ll be introducing new behaviours that others will have to work around.
+所有这些处理方式的差异都可能（无意间）导致互通性问题。正确的做法是遵循消息头部的常规处理，除​​非有相反的特定要求。
 
-In an ideal world, the specification would be defined in terms of the behaviours of those who handle the message, like this:
+因为一般来说，规范会再编写时明确指出相应行为的；换句话说，未被明确禁止的行为都是被允许的。因此，过多地阅读规范可能会在无意中带来一些坏处，因为你可能引入一些其他人必须处理的新行为。
 
+在理想情况下，规范是根据处理消息的人的行为来定义的，如下所示：
+
+```text
 Senders of the Foo message MUST NOT include a Bar header. Recipients
 of a Foo message that includes a Bar header MUST ignore the Bar header,
 but MUST NOT remove it.
-Absent that, it’s best to look for more general advice about error handling elsewhere in the specification (e.g., HTTP’s Conformance and Error Handling section).
 
-Also, keep in mind the target of requirements; most specifications have a highly developed set of terms that they use to distinguish between different roles in the protocol.
+Foo 消息的发送者不得在其中包含 Bar 头部。包含 Bar 头部的 Foo 消息的接收者必须忽略 Bar 头部，但不得移除它。
+```
 
-For example, HTTP has proxies, which are a kind of intermediary, which implement both a client and a server (but not a User-Agent or an origin server); they need to pay attention to requirements targeted at all of those roles.
+[http_conformance]: https://httpwg.org/specs/rfc7230.html#conformance
 
-Likewise, HTTP distinguishes between “generating” a message and merely “forwarding” it in some requirements, depending on the specific situation. Paying attention to this kind of specific terminology can save you a lot of guesswork.
+如果没有相关规定，最好在规范中（例如，HTTP 协议的 [一致性与错误处理][http_conformance] 部分）的其他地方寻求有关错误处理的一般建议。
+
+另外需要记住的是要求的*目标*对象是什么；大多数规范都有一套高度完善的术语，用于区分协议中的不同角色。
+
+[http_proxy]: https://httpwg.org/specs/rfc7230.html#intermediaries
+
+例如，HTTP 具有 [代理][http_proxy] 的定义，它是一种中介，既实现了客户端又实现了服务器（但它不是 User-Agent 或真正的服务器）；他们需要注意针对所有这些角色的要求。
+
+同样地，HTTP 会根据特定情况在某些要求中区分“generating（生成）”消息和仅“forwarding（转发）”消息。关注这种特定的术语可以免去大量的猜测。
 
 ### SHOULD
 
