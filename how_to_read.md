@@ -5,7 +5,7 @@
 
 *本文译自 [How to Read an RFC][how_to_read], [mnot’s blog (Mark Nottingham)][mnot]*
 
-无论好坏，“请求意见稿（RFC，Request for Comments）”为我们标准化了许多与互联网相关的协议。这些意见稿常被视为圣经，开发者总是试图解析并理解其隐含的意义，而后因为难以理解而将其视为不相关资料而忽视掉。这常常会带来挫败感，更甚者引发互通性问题与安全性问题。
+无论好坏，“请求意见稿（RFC，Request for Comments）”为我们标准化了许多与因特网相关的协议。这些意见稿常被视为圣经，开发者总是试图解析并理解其隐含的意义，而后因为难以理解而将其视为不相关资料而忽视掉。这常常会带来挫败感，更甚者引发互通性问题与安全性问题。
 
 [mark_nottingham]: https://datatracker.ietf.org/person/Mark%20Nottingham
 
@@ -31,7 +31,7 @@
 
 毫无疑问，纯文本、格式丑陋的 RFC 文件难以阅读，不过这一问题即将被改变；RFC Editor 将支持新的 [RFC 格式][rfc_format]，该格式设计更美观、同时支持定制化。同时，如果你想要的是可用性更高的 RFC 文件，可以选择使用第三方存储库来查阅；例如，[greenbytes][greenbytes] 维护了一个与 WebDAV（[基于 Web 的分布式编写和版本控制][wiki_webdav]）相关的 RFC 文件列表，[HTTP 工作组（HTTP Working Group）][http_group] 则维护与 HTTP 相关的列表。
 
-## 这份 RFC 属于哪一类？
+## 这份文档属于哪一类 RFC？
 
 所有的 RFC 文件顶部都有如下标注：
 
@@ -46,7 +46,7 @@ ISSN: 2070-1721
 
 [indepent_stream]: https://www.rfc-editor.org/about/independent/
 
-最左上角的 “Internet Engineering Task Force (IETF)（互联网工程任务组）” 表明这是由 IETF 组织制定的标准。当然，也有其他方法可以发布无需获得 IETF 认可的 RFC 文件；例如，[独立提交渠道][indepent_stream]，尽管该方式并不广为人知，
+最左上角的 “Internet Engineering Task Force (IETF)（因特网工程任务组）” 表明这是由 IETF 组织制定的标准。当然，也有其他方法可以发布无需获得 IETF 认可的 RFC 文件；例如，[独立提交渠道][indepent_stream]，尽管该方式并不广为人知，
 
 事实上存在着很多不同“渠道（stream）”可以用来发布文档。**但是只有经由 IETF 发表的文稿，才表明该协议规范已经经过整个 IETF 组织审核并做出共识声明**。
 
@@ -54,7 +54,7 @@ ISSN: 2070-1721
 
 [datatracker]: https://datatracker.ietf.org/submit/
 
-在此下方是“请求意见稿”编号。**如果显示的是“Internet-Draft（互联网草案）”，则它不是 RFC**；这只是一个提议，*任何人*都 [可以写一个][datatracker]。文稿只是互联网草案，并不意味着它最终会被 IETF 所采用。
+在此下方是“请求意见稿”编号。**如果显示的是“Internet-Draft（因特网草案）”，则它不是 RFC**；这只是一个提议，*任何人*都 [可以写一个][datatracker]。文稿只是因特网草案，并不意味着它最终会被 IETF 所采用。
 
 *类别*可以是“标准记录（Standards Track）”、“报告性的（Informational）”、“实验性的（Experimental）”和“当前最佳实践（Best Current Practice）”其中之一。它们之间的区别有时是模糊的，但如果是 IETF 产出的（请参见上文），则表明该文稿已经经过合理的评审。但是请注意，即使经过 IETF 共识发布，报告性和实验性文件也*不是*标准。
 
@@ -108,7 +108,7 @@ Updated by: 2817, 5785, 6266, 6585                          Errata Exist
 [iana]:https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%B7%E7%A0%81%E5%88%86%E9%85%8D%E5%B1%80
 [http_registry]: https://www.iana.org/assignments/http-methods/http-methods.xhtml
 
-另一点需要谨记的是，许多协议都设置了 IANA（[Internet Assigned Numbers Authority，互联网号码分配局][iana]）登记列表管理它们的规范扩展；这些才是事实标准的来源，而不是规范文档。例如，HTTP 方法的权威列表包含在这个 [登记表][http_registry] 中，而不是在 HTTP 规范文档中。
+另一点需要谨记的是，许多协议都设置了 IANA（[Internet Assigned Numbers Authority，因特网号码分配局][iana]）登记列表管理它们的规范扩展；这些才是事实标准的来源，而不是规范文档。例如，HTTP 方法的权威列表包含在这个 [登记表][http_registry] 中，而不是在 HTTP 规范文档中。
 
 ## 用语要求
 
