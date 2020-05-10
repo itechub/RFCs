@@ -1,24 +1,15 @@
-# 1.Introduction
+# 1. 介绍
 
-   JSON Web Token (JWT) is a compact claims representation format
-   intended for space constrained environments such as HTTP
-   Authorization headers and URI query parameters.  JWTs encode claims
-   to be transmitted as a JSON [[RFC7159](https://tools.ietf.org/html/rfc7159)] object that is used as the
-   payload of a JSON Web Signature (JWS) [[JWS](https://tools.ietf.org/html/rfc7519#ref-JWS)] structure or as the
-   plaintext of a JSON Web Encryption (JWE) [[JWE](https://tools.ietf.org/html/rfc7519#ref-JWE)] structure, enabling
-   the claims to be digitally signed or integrity protected with a
-   Message Authentication Code (MAC) and/or encrypted.  JWTs are always
-   represented using the JWS Compact Serialization or the JWE Compact
-   Serialization.
+[rfc7159]: https://tools.ietf.org/html/rfc7159
+[jws]: https://tools.ietf.org/html/rfc7519#ref-JWS
+[jwe]: https://tools.ietf.org/html/rfc7519#ref-JWE
 
-   The suggested pronunciation of JWT is the same as the English word
-   "jot".
+JSON Web Token（JWT）是一种紧凑的声明表现格式，它适用于空间受限的环境，例如 HTTP 的授权头部和 URI 查询参数。JWTs 将声明编码为 JSON [[RFC7159][rfc7159]] 对象进行传输，该对象作为 JSON Web 签名（JWS, JSON Web Signature）[[JWS][jws]] 的有效载荷，或是 JSON Web 加密（JSE, JSON Web Encryption）[[JWE][jwe]] 的明文表示，从而使得声明数据可以在伴随着**消息认证码**（MAC, Message Authentication Code）时被数字签名并确保完整性。JWTs 只有 **JWS 紧凑序列化**及 **JWE 紧凑序列化**两种呈现形式。
 
-## 1.1.  Notational Conventions
+JWT 的推荐发音和英语单词“jot”一致。
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   "Key words for use in RFCs to Indicate Requirement Levels" [[RFC2119](https://tools.ietf.org/html/rfc2119)].
-   The interpretation should only be applied when the terms appear in
-   all capital letters.
+## 1.1. 用语约定
+
+[rfc2119]: https://tools.ietf.org/html/rfc2119
+
+本文档中的关键字 "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY" 以及 "OPTIONAL" 的释义和 “用于指示需求级别的 RFC 文件关键字”[[RFC2119][rfc2119]] 中的描述一致。当单词为全大写时才将其视为一个 RFC 关键字。
