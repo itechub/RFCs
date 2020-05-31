@@ -1,63 +1,53 @@
-# 2. Terminology
+# 2. 术语
 
 [ref-jws]: https://tools.ietf.org/html/rfc7519#ref-JWS
 
-The terms "JSON Web Signature (JWS)", "Base64url Encoding", "Header
+词组 "JSON Web Signature (JWS)", "Base64url Encoding", "Header
 Parameter", "JOSE Header", "JWS Compact Serialization", "JWS
-Payload", "JWS Signature", and "Unsecured JWS" are defined by the JWS
-specification [[JWS][ref-jws]].
+Payload", "JWS Signature", 以及 "Unsecured JWS" 的相关定义可以在 JWS 标准 [[JWS][ref-jws]] 中找到.
 
 [ref-jwe]: https://tools.ietf.org/html/rfc7519#ref-JWE
 
-The terms "JSON Web Encryption (JWE)", "Content Encryption Key
-(CEK)", "JWE Compact Serialization", "JWE Encrypted Key", and "JWE
-Initialization Vector" are defined by the JWE specification [[JWE][ref-jwe]].
+词组 "JSON Web Encryption (JWE)", "Content Encryption Key
+(CEK)", "JWE Compact Serialization", "JWE Encrypted Key", 以及 "JWE
+Initialization Vector" 的相关定义可以在 JWE 标准 [[JWE][ref-jwe]] 中找到.
 
 [rfc4949]: https://tools.ietf.org/html/rfc4949
 
-The terms "Ciphertext", "Digital Signature", "Message Authentication
-Code (MAC)", and "Plaintext" are defined by the "Internet Security
-Glossary, Version 2" [[RFC4949][rfc4949]].
+词组 "Ciphertext", "Digital Signature", "Message Authentication
+Code (MAC)", 以及 "Plaintext" 的相关定义可以在 "Internet Security
+Glossary, Version 2" [[RFC4949][rfc4949]] 中找到.
 
-These terms are defined by this specification:
+相关词组的定义标准如下：
 
 ## JSON Web Token (JWT)
 
-A string representing a set of claims as a JSON object that is
-encoded in a JWS or JWE, enabling the claims to be digitally
-signed or MACed and/or encrypted.
+通过 JWS 或者 JWE 将声明数据集编码成一个字符串 JSON 对象，从而使得声明数据通过加密/非加密方式进行数字签名，或通过 **消息认证码**（MAC, Message Authentication Code）进行数据完整性保护。
 
-## JWT Claims Set
+## 声明数据集（JWT Claims Set）
 
-A JSON object that contains the claims conveyed by the JWT.
+一个 JSON 对象，包含一个或多个由 JWT 进行转换的声明数据。
 
-## Claim
+## 声明数据（Claim）
 
-A piece of information asserted about a subject.  A claim is
-represented as a name/value pair consisting of a Claim Name and a
-Claim Value.
+声明数据定义了一个主体的声明信息。通常一个声明数据由一对键值对组成，分别称之为声明域及声明值。
 
-## Claim Name
+## 声明域（Claim Name）
 
-The name portion of a claim representation.  A Claim Name is
-always a string.
+声明数据中的域部分，通常声明域是一个字符串。
 
-## Claim Value
+## 声明值（Claim Value）
 
-The value portion of a claim representation.  A Claim Value can be
-any JSON value.
+声明数据中的值部分，通常声明值可以是任意 JSON 对象。
 
-## Nested JWT
+## 嵌套 JWT（Nested JWT）
 
-A JWT in which nested signing and/or encryption are employed.  In
-Nested JWTs, a JWT is used as the payload or plaintext value of an
-enclosing JWS or JWE structure, respectively.
+一个包含嵌套的加密/非加密数字签名的 JWT。在嵌套的 JWTs 中，相对应的，JWT 作为 JWS 的有效载荷，或是 JSE 的明文表示。
 
-## Unsecured JWT
+## 不安全的 JWT(Unsecured JWT)
+该 JWT 包含的声明数据没有进行完整性保护或者加密。
 
-A JWT whose claims are not integrity protected or encrypted.
-
-## Collision-Resistant Name
+## 抗碰撞命名(Collision-Resistant Name)
 
 [rfc4122]: https://tools.ietf.org/html/rfc4122
 
@@ -70,6 +60,7 @@ X.670 Recommendation series, and Universally Unique IDentifiers
 namespace, the definer of a name needs to take reasonable
 precautions to ensure they are in control of the portion of the
 namespace they use to define the name.
+
 
 ## StringOrURI
 
