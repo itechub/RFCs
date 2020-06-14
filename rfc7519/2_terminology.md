@@ -51,37 +51,18 @@ Glossary, Version 2" [[RFC4949][rfc4949]] 中找到.
 
 [rfc4122]: https://tools.ietf.org/html/rfc4122
 
-A name in a namespace that enables names to be allocated in a
-manner such that they are highly unlikely to collide with other
-names.  Examples of collision-resistant namespaces include: Domain
-Names, Object Identifiers (OIDs) as defined in the ITU-T X.660 and
-X.670 Recommendation series, and Universally Unique IDentifiers
-(UUIDs) [[RFC4122][rfc4122]].  When using an administratively delegated
-namespace, the definer of a name needs to take reasonable
-precautions to ensure they are in control of the portion of the
-namespace they use to define the name.
-
+抗碰撞命名指的是通过命名空间，从而保证命名空间内相关命名不会与其他命名冲突。相对应的抗碰撞命名空间名包括如下： 域名、ITU-T X.660 及 X.670 中提倡的对象标识(OIDs)定义、全局唯一标识符(UUIDs)[[RFC4122][rfc4122]]。使用管理委托的名称空间时，名称的定义者需要采取合理的预防措施，以确保它们可以控制用于定义名称的名称空间部分。
 
 ## StringOrURI
 
 [rfc3986]: https://tools.ietf.org/html/rfc3986
 
-A JSON string value, with the additional requirement that while
-arbitrary string values MAY be used, any value containing a ":"
-character MUST be a URI [[RFC3986][rfc3986]].  StringOrURI values are
-compared as case-sensitive strings with no transformations or
-canonicalizations applied.
+一个 JSON 字符串值，附带以下相关约束。其对应的值可以是任意字符串，但如果该字符串包含 ":" 字符， 那么该字符串必须是一个 URI [[RFC3986][rfc3986]] 格式. StringOrURI 值通常被当作大小写敏感的字符串做对比，对比之前不会做特殊的转换或适配。
 
 ## NumericDate
 
 [ref-posix]: https://tools.ietf.org/html/rfc7519#ref-POSIX.1
 [rfc3986]: https://tools.ietf.org/html/rfc3339
 
-A JSON numeric value representing the number of seconds from
-1970-01-01T00:00:00Z UTC until the specified UTC date/time,
-ignoring leap seconds.  This is equivalent to the IEEE Std 1003.1,
-2013 Edition [[POSIX.1][ref-posix]] definition "Seconds Since the Epoch", in
-which each day is accounted for by exactly 86400 seconds, other
-than that non-integer values can be represented.  See RFC 3339
-[[RFC3339][rfc3986]] for details regarding date/times in general and UTC in
-particular.
+一个 JSON 数值，用于表示指定 UTC 格式时间与 1970-01-01T00:00:00Z UTC 的差值（以秒为单位，忽略闰秒）。 这与 IEEE Std 1003.1, 2013 Edition [[POSIX.1][ref-posix]] 中 "Seconds Since the Epoch" 的定义一致，其中定义每一天为标准 86400 秒，而不采用非整数型数值进行表示。更多关于 日期/时间 及 UTC 详情请参考 RFC 3339
+[[RFC3339][rfc3986]] 文档。
